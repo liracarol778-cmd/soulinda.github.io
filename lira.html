@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aceitas? 💗</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #ffc8dd;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            width: 90%;
+            max-width: 500px;
+            padding: 30px 20px;
+        }
+
+        .coracao {
+            font-size: 65px;
+            animation: pulsar 1s infinite alternate;
+        }
+
+        h1 {
+            color: #590d22;
+            font-size: clamp(26px, 6vw, 36px);
+            margin: 20px 0 35px;
+        }
+
+        .botoes {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 18px;
+            min-height: 65px;
+        }
+
+        button {
+            border: 2px solid #ff8fab;
+            border-radius: 12px;
+            padding: 13px 28px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.08);
+        }
+
+        #sim {
+            background: #e75480;
+            color: white;
+        }
+
+        #nao {
+            background: #ffb3c1;
+            color: #590d22;
+        }
+
+        #mensagem {
+            display: none;
+            color: #590d22;
+            font-size: 22px;
+            font-weight: bold;
+            line-height: 1.6;
+            margin-top: 25px;
+        }
+
+        @keyframes pulsar {
+            from { transform: scale(1); }
+            to { transform: scale(1.15); }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <div class="coracao">💗</div>
+
+        <h1>Vamos no shopping eu tu e o john??</h1>
+
+        <div class="botoes" id="botoes">
+            <button id="sim" onclick="aceitou()">
+                Sim ❤️
+            </button>
+
+            <button id="nao">
+                Não 
+            </button>
+        </div>
+
+        <div id="mensagem">
+            Nós te adoramos, seu miserável 🙄🙄
+            <br>
+        
+            <br>
+            💖💖💖
+        </div>
+    </main>
+
+    <script>
+        const botaoNao = document.getElementById("nao");
+
+        function fugir() {
+            botaoNao.style.position = "fixed";
+
+            const largura = botaoNao.offsetWidth;
+            const altura = botaoNao.offsetHeight;
+
+            const x = Math.random() *
+                (window.innerWidth - largura);
+
+            const y = Math.random() *
+                (window.innerHeight - altura);
+
+            botaoNao.style.left = x + "px";
+            botaoNao.style.top = y + "px";
+        }
+
+        botaoNao.addEventListener("mouseover", fugir);
+
+        botaoNao.addEventListener("touchstart", function(event) {
+            event.preventDefault();
+            fugir();
+        }, { passive: false });
+
+        function aceitou() {
+            document.querySelector("h1").textContent =
+                "Você disse SIM!!! (eu sabia que você ia aceitar 😌)";
+
+            document.getElementById("botoes").style.display =
+                "none";
+
+            document.getElementById("mensagem").style.display =
+                "block";
+        }
+    </script>
+</body>
+</html>
